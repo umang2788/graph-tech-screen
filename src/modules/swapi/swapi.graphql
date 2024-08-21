@@ -1,5 +1,16 @@
-extend type Query{
-  swapiCharacterById(id: ID!): StarWarsCharacter!
+extend type Query {
+  swapiCharacterById(id: ID!): SWAPICharByIdResponse!
+}
+
+union SWAPICharByIdResponse = StarWarsCharacter | StarWarsCharacterNotFound
+
+type StarWarsCharacterNotFound {
+  content: ErrorContent
+}
+
+type ErrorContent {
+  message: String
+  localizedMessage: String
 }
 
 type StarWarsCharacter {
@@ -13,4 +24,3 @@ enum Gender {
   MALE
   FEMALE
 }
-
