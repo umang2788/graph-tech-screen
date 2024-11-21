@@ -4,8 +4,8 @@ import { GraphQLFieldResolver } from "graphql";
 type Args = { id: string };
 
 const Query: Record<string, GraphQLFieldResolver<{}, Context, any>> = {
-  swapiCharacterById: async (_, args: Args, ctx) => {
-    const char = await fetch(`https://swapi.dev/api/people/${args.id}/`);
+  swapiCharacterById: async (_,, ctx) => {
+    //// Can you make a connection to "https://swapi.dev/api/people/${args.id}/"
 
     if (char.status == 404) {
       return {
